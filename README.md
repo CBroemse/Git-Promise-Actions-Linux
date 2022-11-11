@@ -8,3 +8,11 @@
       - functionality
       - politics and
       - x other random factors ?!
+
+#### Focosing on functionality
+   this is a try
+   every line per file yields two different types (not objects yet)
+   that are formatted from bash linux script in a browser(yes also the window guz)
+   to javascript (JS) objects. This program deals with that: Under the premise that:
+     if ntest And/Or nInt of seriesTestjs.sh in linuxJsobjects(main) 
+        [String] == objects => jsCommand (object) ->  take notes in unique8.sh/js && unique(j)9.sh/js
