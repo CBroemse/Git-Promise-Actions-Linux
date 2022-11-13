@@ -41,7 +41,6 @@ jobs:
         with:
           name: homework
           path: math-homework.txt
-      -
 
   job_3:
     name: Display results
