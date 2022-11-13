@@ -35,7 +35,7 @@ jobs:
           name: homework
       - shell: bash
         run: |
-          balue=`cat math-homework.txt`
+          balue=$(cat math-homework.txt)
           expr $balue \* 9 > math-homework.txt
       - name: Upload math result for job 2
         uses: actions/upload-artifact@v3
