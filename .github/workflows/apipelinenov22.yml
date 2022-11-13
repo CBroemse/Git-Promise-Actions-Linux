@@ -17,7 +17,6 @@ jobs:
         with:
           name: homework
           path: math-homework.txt
-   
       - name: Upload haskell output into maxShell.sh for job 1
         uses: actions/upload-artifact@v3
         with:
