@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "💡 The ${{ https://github.com/CBroemse/linux-svg-2D/tree/main/source }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: Call haskell Stack
         run: ghci -e "main" -interactive-print=FileSystem2.main fileSystem2
