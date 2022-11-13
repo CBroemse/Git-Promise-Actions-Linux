@@ -36,37 +36,13 @@ jobs:
       - shell: bash
         run: |
           balue=$(cat math-homework.txt)
-          expr $balue '*' 9 > math-homework.txt
+          echo "$balue§
       - name: Upload math result for job 2
         uses: actions/upload-artifact@v3
         with:
           name: homework
           path: math-homework.txt
-      - shell: bash
-        run: |
-          #!usr/bin/env bash
-          #              ^^^^- NOT sh; sh does not support [[ ]] or <(...)
-          addWords() {
-            local tempFile dictFile
-            tempFile=$(mktemp dictFile.XXXXXX) || return
-            dictFile=$1; shift
-
-            [[ -e "$dictFile" ]] || touch "$dictFile" || return
-
-            sort -um "$dictFile" <(printf '%s\n' "$@" | sort -u) >"$tempFile"
-            mv -- "$tempFile" "$dictFile"
-          }
-          
-          addWords maxShell.sh beta dad
-          addWords maxShell.sh $1 $2
-          mak=`cat maxShell.sh`
-          $mak >> maxShell.sh
-      - name: Upload haskell output into maxShell.sh for job 1
-        uses: actions/upload-artifact@v3
-        with:
-          name: muschel
-          path: maxShell.sh
-
+      -
 
   job_3:
     name: Display results
