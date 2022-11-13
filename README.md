@@ -16,3 +16,6 @@
    to javascript (JS) objects. This program deals with that: Under the premise that:
      if ntest And/Or nInt of seriesTestjs.sh in linuxJsobjects(main) 
         [String] == objects => jsCommand (object) ->  take notes in unique8.sh/js && unique(j)9.sh/js
+##### edit questions
+    when importing a txt instead of sh format how can a string be turned
+    into code that runs in a git : action.yml
