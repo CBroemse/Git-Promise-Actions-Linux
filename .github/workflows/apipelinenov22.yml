@@ -1,4 +1,4 @@
-name: my pipeline
+name: a pipeline nov 2022
 
 on: [push]
 
