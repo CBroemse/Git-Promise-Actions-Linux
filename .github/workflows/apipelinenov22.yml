@@ -1,0 +1,93 @@
+name: my pipeline
+
+on: [push]
+
+jobs:
+  job_1:
+    name: Add 3 and 7
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          expr 3 + 7 > math-homework.txt
+          touch maxShell.sh
+          expr 333 > maxShell.sh
+      - name: Upload math result for job 1
+        uses: actions/upload-artifact@v3
+        with:
+          name: homework
+          path: math-homework.txt
+   
+      - name: Upload haskell output into maxShell.sh for job 1
+        uses: actions/upload-artifact@v3
+        with:
+          name: muschel
+          path: maxShell.sh
+
+  job_2:
+    name: Multiply by 9
+    needs: job_1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download math result for job 1
+        uses: actions/download-artifact@v3
+        with:
+          name: homework
+      - shell: bash
+        run: |
+          balue=`cat math-homework.txt`
+          expr $balue \* 9 > math-homework.txt
+      - name: Upload math result for job 2
+        uses: actions/upload-artifact@v3
+        with:
+          name: homework
+          path: math-homework.txt
+      - shell: bash
+        run: |
+          #!usr/bin/env bash
+          #              ^^^^- NOT sh; sh does not support [[ ]] or <(...)
+          addWords() {
+            local tempFile dictFile
+            tempFile=$(mktemp dictFile.XXXXXX) || return
+            dictFile=$1; shift
+
+            [[ -e "$dictFile" ]] || touch "$dictFile" || return
+
+            sort -um "$dictFile" <(printf '%s\n' "$@" | sort -u) >"$tempFile"
+            mv -- "$tempFile" "$dictFile"
+          }
+          
+          addWords maxShell.sh beta dad
+          addWords maxShell.sh $1 $2
+          mak=`cat maxShell.sh`
+          $mak >> maxShell.sh
+      - name: Upload haskell output into maxShell.sh for job 1
+        uses: actions/upload-artifact@v3
+        with:
+          name: muschel
+          path: maxShell.sh
+
+
+  job_3:
+    name: Display results
+    needs: job_2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download math result for job 2
+        uses: actions/download-artifact@v3
+        with:
+          name: homework
+      - name: Print the final result
+        shell: bash
+        run: |
+          halue=`cat math-homework.txt`
+          echo The result is $halue
+      - name: Download math result for job 2
+        uses: actions/download-artifact@v3
+        with:
+          name: muschel
+      - name: Print the final result
+        shell: bash
+        run: |
+          #!/usr/bin/env bash
+          cat maxShell.sh
