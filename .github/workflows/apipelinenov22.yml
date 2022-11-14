@@ -35,7 +35,7 @@ jobs:
       - shell: bash
         run: |
           balue=$(cat math-homework.txt)
-          echo $(expr "$balue" '*' 9)
+          echo $(expr "$balue" '*' 9) > math-homework.txt
       - name: Upload math result for job 2
         uses: actions/upload-artifact@v3
         with:
